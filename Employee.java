@@ -1,33 +1,39 @@
 package Java40;
 
-
 public class Employee {
     String name;
-    int salary;
+    double salary;
     int workHours;
     int hireYear;
 
-    public Employee(String name, int salary, int workHours, int hireYear) {
+    public Employee(String name, double salary, int workHours, int hireYear) {
         this.name = name;
         this.salary = salary;
         this.workHours = workHours;
         this.hireYear = hireYear;
     }
-    public void toString(){
-        public void tax(int salary){
-            if(this.salary<1000) System.out.println("vergi: 0");
-            else System.out.println("vergi: " this.salary*0.03);
-        }
 
-        public void bonus(int workHours){
-            if(this.workHours < 40) System.out.println("bonus: 0");
-            else return System.out.println("bonus: " + (this.workHours - 40)*30);
-        }
-        public float raiseSalary(int hireYear){
-            if(2021 - this.hireYear < 10) System.out.println("Maaş artışı: " + this.salary*0.05);
-            else if(2021 - this.hireYear < 20) System.out.println("Maaş artışı: " + this.salary*0.1);
-            else System.out.println("Maaş artışı: " + this.salary*0.15);       
-        }
+    double tax(double salary){
+        if(this.salary<1000) return 0;
+        else return this.salary*0.03;
+    }
+
+    double bonus(int workHours){
+        if(this.workHours < 40) return 0;
+        else return (this.workHours - 40)*30;
+    }
+    double raiseSalary(int hireYear){
+        if(2021 - this.hireYear < 10) return this.salary*0.05;
+        else if(2021 - this.hireYear < 20) return this.salary*0.1;
+        else return this.salary*0.15;     
+    }
+    public String toString(){
+        System.out.println("Vergi: " + this.tax(salary));
+        System.out.println("Bonus: " + this.bonus(workHours));
+        System.out.println("Maaş Artışı: " + this.raiseSalary(hireYear));
+        System.out.println("Vergi ve Bonuslar ile birlikte maaş: " + (this.tax(salary) + this.bonus(workHours) + this.salary));
+        System.out.println("Toplam maaş: " + (this.tax(salary) + this.bonus(workHours) + this.raiseSalary(hireYear) + this.salary));
+        return null;
     }
 
 }
